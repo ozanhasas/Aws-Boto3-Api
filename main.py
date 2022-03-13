@@ -34,8 +34,8 @@ def list_instances():
         logging.error(e)
         return make_response(jsonify(Success=False, Error=str(e), Hata="Internal Server Error"), 500)
     instances_list = []
-    for i in response['Reservations'][0]['Instances']:
-        instances_list.append(i["InstanceId"])
+    for i in response['Reservations']:
+        instances_list.append(i["Instances"][0]['InstanceId'])
     return make_response(jsonify(Sucsess=True, Instances_list=instances_list), 200)
 
 
